@@ -1,0 +1,7 @@
+(select director
+from movie
+where 1980 <= year and year < 1990)
+except
+(select director
+from movie
+where 1990 <= year and year < 2000);

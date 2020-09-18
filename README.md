@@ -3,9 +3,13 @@ Repository mit den Anpassungen der Anwendung "Praktomat" (https://github.com/KIT
 
 
 
+
+
 ## Grundlegende Installation 
 
 Entnehmen Sie das generelle Vorgehen zur Installation bitte dem Repository des KIT: https://github.com/KITPraktomatTeam/Praktomat#general-setup
+
+
 
 
 
@@ -67,6 +71,44 @@ source ./loader.sh
 
 
 
+
+
+### SafeDocker
+
+Sollten Sie SafeDocker (https://github.com/nomeata/safe-docker) verwenden, müssen Sie für das Nachladen folgende Anpassung in dessen Code vornehmen:
+
+Ändern Sie hier die Zeile
+
+```
+push @cmd, qw!docker run --rm --read-only --sig-proxy --tmpfs /tmp --tmpfs /run --tmpfs /home --net=none!;
+```
+
+zu 
+
+```
+push @cmd, qw!docker run --rm --read-only --sig-proxy --tmpfs /tmp --tmpfs /run --tmpfs /home --net=host!;
+```
+
+um den Zugriff auf Netzwerk-Ressourcen zu ermöglichen.
+
+
+
+
+
+### Docker Container für PSQL
+
+Für das Handling von SQL-Aufgaben wird eine eigene PostgreSQL-Instanz (https://postgresql.org/ bzw. https://hub.docker.com/_/postgres) verwendet.
+
+Erstellen Sie einen solchen Container wie folgt, um ihn nur intern für den Praktomat zugänglich zu machen:
+
+```
+sudo docker run --name psqltest -d -p 127.0.0.1:[[INTERNER PORT]]:5432 --restart always -e POSTGRES_PASSWORD=[[PASSWORT FÜR POSTGRES BENUTZER]] postgres:latest
+```
+
+
+
+
+
 ### Die Checker Skripte
 
 Die unter ``sideloads/`` zur Verfügung gestellten Dateien sind das Kernstück der Anpassungen. Hierin befindet sich folgendes:
@@ -85,8 +127,10 @@ Die unter ``sideloads/`` zur Verfügung gestellten Dateien sind das Kernstück d
 
 
 
-## Beispiel
 
-Um die Anpassungen einfach zu integrieren, stellen wir für RADB sowie PSQL jeweils ein ausführlich kommentiertes Beispiel unter ``sideloads/tasks/`` bereit. Die jeweils dazu passende Datei, die in der Weboberfläche hochgeladen werden muss ist unter ``webupload/`` zu finden.
+
+## Beispiele
+
+Um die Anpassungen einfach zu integrieren, stellen wir für RADB sowie PSQL jeweils ein ausführlich kommentiertes Beispiel unter ``sideloads/tasks/`` bereit. Die jeweils dazu passende Datei, die in der Weboberfläche hochgeladen werden muss ist unter ``webuploads/`` zu finden.
 
 Die Beispiele stammen von *Jennifer Widom* und sind hier verfügbar: https://github.com/andylamp/stanford_dbclass

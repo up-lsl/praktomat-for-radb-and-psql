@@ -134,3 +134,12 @@ Die unter ``sideloads/`` zur Verfügung gestellten Dateien sind das Kernstück d
 Um die Anpassungen einfach zu integrieren, stellen wir für RADB sowie PSQL jeweils ein ausführlich kommentiertes Beispiel unter ``sideloads/tasks/`` bereit. Die jeweils dazu passende Datei, die in der Weboberfläche hochgeladen werden muss ist unter ``webuploads/`` zu finden.
 
 Die Beispiele stammen von *Jennifer Widom* und sind hier verfügbar: https://github.com/andylamp/stanford_dbclass
+
+
+
+
+
+## Eigene Aufgaben erstellen und debuggen
+
+Um erste eigene Aufgaben zu erstellen können einfach eine Beispielaufgabe (einen Ordner unter ``sideloads/tasks/``) duplizieren und mit einem neuen Namen für die Aufgabe versehen. Das Duplizieren der Datei für den Webupload (unter ``webuploads/``) läuft analog; hier ist jedoch anschließend die Variable ``taskid`` auf den Ordnernamen der neuen Aufgabe anzupassen. Um die Spezifika der Aufgabe (z.B. Berechtigungen, zu verwendnende Datenbank, ...) anzupassen, sind die entsprechenden Zeilen in der Datei ``checker.sh`` im Aufgabenordner abzuändern. Die Musterlösung der Aufgabe kann entweder als Ausgabe (in ``solution.output``) oder Abfrage (in ``solution.query``; wird nur verwendet, wenn ``solution.output`` nicht vorhanden) angegeben werden.
+Das Testen und Debuggen vor dem Upload ist (außerhalb der SafeDocker-Umgebung) einfach möglich. Hierfür genügt es, die Datei für den Webupload zusammen mit einem beispielhaften Lösungsupload in einen neuen Ordner zu kopieren und auszuführen. Sollten Fehler auftreten kann in der ``checker.sh`` die Variable ``debugLevel`` bis auf den Wert von 5 erhöht werden um weitere Ausgaben zu erhalten.

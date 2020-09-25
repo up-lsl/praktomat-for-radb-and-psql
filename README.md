@@ -25,8 +25,8 @@ Um den Umfangreichen Skript Checker nicht jedes Mal im Webinterface hochzuladen 
 
 ```
 <VirtualHost *:[[INTERNER PORT]]>
-    DocumentRoot [[PFAD ZU VERFÜGBAREN DATEIEN (hier Ordener sideloads)]]
-    <Directory [[PFAD ZU VERFÜGBAREN DATEIEN (hier Ordener sideloads)]]>
+    DocumentRoot [[PFAD ZU VERFÜGBAREN DATEIEN (hier Ordner sideloads)]]
+    <Directory [[PFAD ZU VERFÜGBAREN DATEIEN (hier Ordner sideloads)]]>
         Order Deny,Allow
         Deny from all
         Allow from 127.0.0.1 ::1

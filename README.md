@@ -114,7 +114,7 @@ sudo docker run --name psqltest -d -p 127.0.0.1:[[INTERNER PORT]]:5432 --restart
 Die unter ``sideloads/`` zur Verfügung gestellten Dateien sind das Kernstück der Anpassungen. Hierin befindet sich folgendes:
 
 - Loader: Enthält Funktionen zum Nachladen von Dateien
-- Funktions: Enthält Funktionen zum Handling von Datenbankverbindungen, Ausführen von RADB-Kommandos und Überprüfung bzw. Abgleich der Programmoutputs
+- Functions: Enthält Funktionen zum Handling von Datenbankverbindungen, Ausführen von RADB-Kommandos und Überprüfung bzw. Abgleich der Programmoutputs
 - Defaults:
   - Databases: Enthält sowohl SQLite als auch SQL Datenbanken, die für die Aufgaben verwendet werden
   - PSQL Queries: Enthält SQL Kommandos, die für das Handling der PSQL-Datenbank erforderlich sind

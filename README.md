@@ -21,7 +21,7 @@ Für eine Überprüfung hochgeladener Dateien wird im Praktomat ein sogenannter 
 
 ### Nachladen von Dateien
 
-Um den Umfangreichen Skript Checker nicht jedes Mal im Webinterface hochladen zu müssen bzw. um dessen einfache Anpassung und Erweiterung zu gewährleisten, wurde eine Möglichkeit eingerichtet, um verschiedene Dateien nachzuladen. Prinzipiell sieht das Sicherheitskonzept des Praktomat vor, dass nicht direkt auf lokale Verzeichnisse des Servers zugegriffen werden kann. Daher wurde ein nur intern verfügbarer Apache Virtual Host erstellt, das nachzuladende Dateien enthält. Hierfür muss die Konfiguration der Apache available site angepasst bzw. folgendes hinzugefügt werden:
+Um den Umfangreichen Skript Checker nicht jedes Mal im Webinterface hochzuladen bzw. um dessen einfache Anpassung und Erweiterung zu gewährleisten, wurde eine Möglichkeit eingerichtet, um verschiedene Dateien nachzuladen. Prinzipiell sieht das Sicherheitskonzept des Praktomat vor, dass nicht direkt auf lokale Verzeichnisse des Servers zugegriffen werden kann. Daher wurde ein nur intern verfügbarer Apache Virtual Host erstellt, das nachzuladende Dateien enthält. Hierfür ist die Konfiguration der Apache available site anzupassen bzw. folgendes hinzuzufügen:
 
 ```
 <VirtualHost *:[[INTERNER PORT]]>
@@ -36,7 +36,7 @@ Um den Umfangreichen Skript Checker nicht jedes Mal im Webinterface hochladen zu
 </VirtualHost>
 ```
 
-Zusätzlich muss dieser Port intern freigegeben werden:
+Zusätzlich ist dieser Port intern freizugeben:
 
 ```bash
 sudo nano /etc/apache2/ports.conf
